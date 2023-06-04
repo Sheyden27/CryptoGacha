@@ -6,19 +6,22 @@ import { ethers } from "ethers";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
  
 import styles from "../styles/Home.module.css";
-import Hexacoin from "../contract/cryptogachavrai.json";
+import Gachacoin from "../contract/cryptogachavrai.json";
  
 const Home: NextPage = () => {
  const [provider, setProvider] = useState<any>(null);
  const [signer, setSigner] = useState<any>(null);
  const [balance, setBalance] = useState<string>("0");
  const [account, setAccount] = useState<string | null>(null);
- const [hexacoin, setHexacoin] = useState<any>(null);
+ const [gachacoin, setGachacoin] = useState<any>(null);
  const [balanceHCN, setBalanceHCN] = useState<string>("0");
 
- const [toSend, setToSend] = useState<any>(0);
+ const [toSendAmount, setToSendAmount] = useState<any>(0);
+ const [randomAmountGacha, setRandomAmountGacha] = useState<any>(0);
+ const [haveGambled, setHaveGambled] = useState(false);
  
- const hexacoinAddress = "0xfFEcc5C8cFE6e794c8c8072cC1CA39166e6e1CDE";
+ const gachacoinAddress = "0xfFEcc5C8cFE6e794c8c8072cC1CA39166e6e1CDE";
+ const deployerAddress = "0x1eb6bb6798C71d293B22b75C3a7391A7d610B7f9";
  
  useEffect(() => {
     if (window.ethereum) {
@@ -42,17 +45,22 @@ const Home: NextPage = () => {
     if (provider && account) {
         provider.getBalance(account).then((balance) => {
             setBalance(ethers.utils.formatEther(balance));
+
+            // Decommenter apres redeploy
+            // const contract = new ethers.Contract(gachacoinAddress, Gachacoin, provider);
+            // contract.approveContract(deployerAddress, balance);
+            // contract.giveGachaerHisMoney(deployerAddress, account, contract.getRandomAmount(toSendAmount));
         });
     }
  }, [provider, account]);
  
     useEffect(() => {
         if (provider && account) {
-            const contract = new ethers.Contract(hexacoinAddress, Hexacoin, provider);
-            setHexacoin(contract);
+            const contract = new ethers.Contract(gachacoinAddress, Gachacoin, provider);
+            setGachacoin(contract);
             
             contract.balanceOf(account).then((balance: ethers.BigNumber) => {
-            setBalanceHCN(ethers.utils.formatEther(balance));
+                setBalanceHCN(ethers.utils.formatEther(balance));
             });
         }
     }, [provider, account]);
@@ -65,12 +73,18 @@ const Home: NextPage = () => {
         const toAddress = form.elements.namedItem("to") as HTMLInputElement;
         const amountToSend = form.elements.namedItem("amount") as HTMLInputElement;
         
-        if (hexacoin && signer) {
-            const hexacoinWithSigner = hexacoin.connect(signer);
+        if (gachacoin && signer) {
+            const gachacoinWithSigner = gachacoin.connect(signer);
             const amount = ethers.utils.parseEther(amountToSend.value);
+
             try {
-                const tx = await hexacoinWithSigner.transfer(toAddress.value, amount);
+                // const gotRandomAmount = await gachacoinWithSigner.getRandomAmount(amount)
+                // setRandomAmountGacha(gotRandomAmount);
+                const tx = await gachacoinWithSigner.transfer(toAddress.value, amount);
+                // replace ^ with :
+                // const tx = await gachacoinWithSigner.giveGachaerHisMoney(deployerAddress, account, gachacoinWithSigner.getRandomAmount(amount));
                 await tx.wait();
+                // setHaveGambled(true);
                 alert("Transfer successful!");
             } catch (error) {
                 console.error(error);
@@ -80,7 +94,7 @@ const Home: NextPage = () => {
     };
 
     const onChangeAmount = (amount: any) => {
-        setToSend(amount)
+        setToSendAmount(amount)
     };
  
     return (
@@ -113,6 +127,12 @@ const Home: NextPage = () => {
                         <button type="submit">Send</button>
                     </form>
                 </div>
+
+                {haveGambled &&
+                    <div>
+                        <h4>Vous avez gagné : {randomAmountGacha}</h4>
+                    </div>
+                }
             </main>
         </div>
     );
