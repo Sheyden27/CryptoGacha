@@ -63,11 +63,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains}>
-        <div style={{display: "flex", justifyContent: "center", flexDirection: "column", width: "100%", /* backgroundColor: "red", */ alignItems: "center"}}>
-          <h1>Votre wallet</h1>
-          <p style={{fontStyle: "italic"}}>Adresse: <span style={{fontStyle: "normal", color: "blue"}}>{account}</span></p>
-          <p>Balance: <span style={{color: "purple"}}>{balance} ETH</span></p>
-        </div>
+        
         <Component {...pageProps} />
       </RainbowKitProvider>
     </WagmiConfig>
