@@ -145,6 +145,19 @@ const Home: NextPage = () => {
                 // setHaveGambled(true);
                 alert("Transfer successful!");
                 setIsTransferLoading(false)
+
+                if (provider && account) {
+                    provider.getBalance(account).then((balance) => {
+                        setBalance(ethers.utils.formatEther(balance));
+                    });
+
+                    const contract = new ethers.Contract(gachacoinAddress, Gachacoin, provider);
+                    setGachacoin(contract);
+                    
+                    contract.balanceOf(account).then((balance: ethers.BigNumber) => {
+                        setBalanceHCN(ethers.utils.formatEther(balance));
+                    });
+                }
             } catch (error) {
                 console.error(error);
                 alert("Transfer failed!");
@@ -179,10 +192,6 @@ const Home: NextPage = () => {
                     </div>
                 </div>
 
-                { isTransferLoading &&
-                <div>
-                    <p>La transaction est en cours... veuillez patienter</p>
-                </div>}
 
                 <div>
                     <form onSubmit={onSubmitBuy} style={{display: "flex", flexDirection: "column"}}>
@@ -206,6 +215,11 @@ const Home: NextPage = () => {
                         {/* <button type="submit">Send</button> */}
                         <button type="submit">Valider</button>
                     </form>
+
+                    { isTransferLoading &&
+                    <div>
+                        <p style={{color: "red"}}>La transaction est en cours... veuillez patienter</p>
+                    </div>}
                 </div>
 
                 {haveGambled &&
