@@ -77,6 +77,22 @@ const Home: NextPage = () => {
         }
     }, [provider, account]);
 
+    useEffect(() => {
+        if (provider && account) {
+            provider.getBalance(account).then((balance) => {
+                setBalance(ethers.utils.formatEther(balance));
+            });
+
+            const contract = new ethers.Contract(gachacoinAddress, Gachacoin, provider);
+            setGachacoin(contract);
+            
+            contract.balanceOf(account).then((balance: ethers.BigNumber) => {
+                setBalanceHCN(ethers.utils.formatEther(balance));
+            });
+        }
+    }, [finishedLoadingAnim])
+    
+
     const onSubmitBuy = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         
@@ -184,7 +200,9 @@ const Home: NextPage = () => {
     return (
         <div className={styles.container}>
             {haveGambled ?
-                <LoadingPage randomAmountGacha={randomAmountGacha} />
+                <LoadingPage randomAmountGacha={randomAmountGacha}
+                    setFinishedLoadingAnim={setFinishedLoadingAnim}
+                    setHaveGambled={setHaveGambled} />
                 :
             <>
                 <Head>

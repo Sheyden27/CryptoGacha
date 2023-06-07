@@ -1,0 +1,60 @@
+.main {
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(230, 131, 230);
+    transition: background-color 1s;
+}
+
+.mainBlack {
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0,0,0);
+    transition: background-color 0s;
+    z-index: 10;
+}
+
+.counter {
+    /* transition: max-width 1s, min-width 1s;
+    /* width: auto; 
+    max-width: 330px;
+    min-width: 230px; */
+}
+
+.startAnim {
+    /* max-width: 120px;
+    min-width: 80px; */
+    transition: max-width 1s, min-width 1s;
+}
+
+.textGrowInitial {
+    transform: scale(1);
+}
+.textGrowStart {
+    font-size: "24px";
+    /* transition: transform 0.3s ease-out; */
+    transform: scale(4);
+    /* transition-property: font-size;
+    transition-duration: 4s; */
+    /* transition-delay: 2s; */
+    /* transition: transform 1s; */
+    transition: transform 3s;
+}
+
+.textGrowEnd {
+    font-size: "28px";
+    /* transition: font-size 1s ease-out; */
+    transform: scale(6);
+    transition: transform 3s;
+}
