@@ -26,7 +26,7 @@ const Home: NextPage = () => {
     const [isTransferLoading, setIsTransferLoading] = useState(false);
     const [finishedLoadingAnim, setFinishedLoadingAnim] = useState(false);
  
-    const gachacoinAddress = "0x2413862110cBC57F668DDA3481e4BFB46276Ea3b";
+    const gachacoinAddress = "0xBBdA41b620f4F33e88C0072B59714d5d24F3Fc3B";
 
     // = owner
     const deployerAddress = "0x1eb6bb6798C71d293B22b75C3a7391A7d610B7f9";
