@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
-    "dev": "next dev",
+    "dev": "npx patch-package && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -12,6 +12,7 @@
     "@rainbow-me/rainbowkit": "^1.0.1",
     "ethers": "^5.7.2",
     "next": "^13.4.3",
+    "patch-package": "^7.0.0",
     "react": "^18.2.0",
     "react-countup": "^6.4.2",
     "react-dom": "^18.2.0",
