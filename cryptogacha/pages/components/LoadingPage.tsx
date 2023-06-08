@@ -6,7 +6,7 @@ import Head from "next/head";
 import { ethers } from "ethers";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
-import CountUp from 'react-countup';
+// import CountUp from 'react-countup';
 // import dynamic from 'next/dynamic'; 
 
 // const CountUp = dynamic(() => import('react-countup'), { ssr: false });

@@ -11,7 +11,6 @@ import Gachacoin from "../contract/cryptogachavrai.json";
 
 import favicon from './assets/favicon.png';
 import LoadingPage from "./components/LoadingPage";
-// import LoadingPage from "./components/LoadingPage";
  
 const Home: NextPage = () => {
     const [provider, setProvider] = useState<any>(null);
@@ -21,7 +20,6 @@ const Home: NextPage = () => {
     const [gachacoin, setGachacoin] = useState<any>(null);
     const [balanceHCN, setBalanceHCN] = useState<string>("0");
 
-    const [toSendAmount, setToSendAmount] = useState<any>(0);
     const [randomAmountGacha, setRandomAmountGacha] = useState<any>(0);
     const [haveGambled, setHaveGambled] = useState(false);
     const [isTransferLoading, setIsTransferLoading] = useState(false);
@@ -59,10 +57,6 @@ const Home: NextPage = () => {
             provider.getBalance(account).then((balance: ethers.BigNumber) => {
                 setBalance(ethers.utils.formatEther(balance));
 
-                // Decommenter apres redeploy
-                // const contract = new ethers.Contract(gachacoinAddress, Gachacoin, provider);
-                // contract.approveContract(deployerAddress, balance);
-                // contract.giveGachaerHisMoney(deployerAddress, account, contract.getRandomAmount(toSendAmount));
             });
         }
     }, [provider, account]);
@@ -97,9 +91,7 @@ const Home: NextPage = () => {
     const onSubmitBuy = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         
-        // Récupérez les champs de saisie à partir de l'objet form
         const form = event.target as HTMLFormElement;
-        // const toAddress = form.elements.namedItem("to") as HTMLInputElement;
         const amountToSend = form.elements.namedItem("buyAmount") as HTMLInputElement;
 
         if (amountToSend.value == '') {
@@ -154,8 +146,6 @@ const Home: NextPage = () => {
             const amount = ethers.utils.parseEther(amountToSend.value);
 
             const randomGeneratedAmount = await gachacoinWithSigner.getRandomAmount(BigInt(amountToSend.value)) - 0
-            console.log(randomGeneratedAmount)
-            setToSendAmount(randomGeneratedAmount)
 
             // console.log(Number(ethers.utils.parseEther(String(randomGeneratedAmount))) - 0);
             
@@ -164,7 +154,6 @@ const Home: NextPage = () => {
                 setRandomAmountGacha(randomGeneratedAmount);
                 setIsTransferLoading(true);
                 const tx = await gachacoinWithSigner.transfer(deployerAddress, amount)
-                // replace ^ with :
                 await tx.wait();
 
                 const txPayBack = await gachacoinWithSigner.giveGachaerHisMoney(account, ethers.utils.parseEther(String(randomGeneratedAmount)));
@@ -192,10 +181,6 @@ const Home: NextPage = () => {
                 setIsTransferLoading(false);
             }
         }
-    };
-
-    const onChangeAmount = (amount: any) => {
-        setToSendAmount(amount)
     };
  
     return (
