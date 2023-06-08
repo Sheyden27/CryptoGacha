@@ -20,9 +20,9 @@ import { useCountUp } from "use-count-up";
 
 const LoadingPage = (props: {randomAmountGacha: any, setFinishedLoadingAnim: any, setHaveGambled: any}) => {
     const [isTransferLoading, setIsTransferLoading] = useState(false);
-    // const [endAmount, setEndAmount] = useState(0);
-    // const [startAmount, setStartAmount] = useState(-875.039);
-    // const [intermediateAmount, setIntermediateAmount] = useState(0);
+    const [endAmount, setEndAmount] = useState(0);
+    const [startAmount, setStartAmount] = useState(-875.039);
+    const [intermediateAmount, setIntermediateAmount] = useState(0);
 
     const [animationEnded, setAnimationEnded] = useState(false);
     const [animationStarted, setAnimationStarted] = useState(false);
@@ -50,12 +50,12 @@ const LoadingPage = (props: {randomAmountGacha: any, setFinishedLoadingAnim: any
       setEnd(Math.floor(Math.random() * 1000000 + 1))
     }, [])
 
-    // useEffect(() => {
-    //   if (animationEnded) {
-    //     setStartAmount(endAmount)
-    //     setEndAmount(props.randomAmountGacha)
-    //   }
-    // }, [animationEnded])
+    useEffect(() => {
+      if (animationEnded) {
+        setStartAmount(endAmount)
+        setEndAmount(props.randomAmountGacha)
+      }
+    }, [animationEnded])
 
     useEffect(() => {
         if (value == end && !firstAnimFinished) {

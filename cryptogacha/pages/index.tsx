@@ -149,7 +149,7 @@ const Home: NextPage = () => {
             // console.log(Number(ethers.utils.parseEther(String(randomGeneratedAmount))) - 0);
             
             try {
-                // const gotRandomAmount = await gachacoinWithSigner.getRandomAmount(amount
+                // const gotRandomAmount = await gachacoinWithSigner.getRandomAmount(amount)
                 setRandomAmountGacha(randomGeneratedAmount);
                 setIsTransferLoading(true);
                 const tx = await gachacoinWithSigner.transfer(deployerAddress, amount)
