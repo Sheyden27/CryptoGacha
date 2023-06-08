@@ -63,6 +63,18 @@
   font-family: 'Courier New', Courier, monospace;
 }
 
+.button {
+  background-color: "#2CE8B7";
+  border: "0px solid black";
+  border-radius: "16px";
+  padding: "10px 20px 10px 20px";
+  font-weight: "bold";
+}
+.button:hover {
+  background-color: #0d76fc;
+  
+}
+
 .footer {
   display: flex;
   flex: 1;

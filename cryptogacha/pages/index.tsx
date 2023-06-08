@@ -11,6 +11,9 @@ import Gachacoin from "../contract/cryptogachavrai.json";
 
 import favicon from './assets/favicon.png';
 import LoadingPage from "./components/LoadingPage";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCartShopping, faCoins, faSquareCheck } from '@fortawesome/free-solid-svg-icons'
  
 const Home: NextPage = () => {
     const [provider, setProvider] = useState<any>(null);
@@ -95,6 +98,7 @@ const Home: NextPage = () => {
 
         if (amountToSend.value == '') {
             console.log("Il n'y a rien");
+            alert("Il n'y a rien");
             return
         }
         
@@ -137,6 +141,7 @@ const Home: NextPage = () => {
 
         if (amountToSend.value == '') {
             console.log("Il n'y a rien");
+            alert("Il n'y a rien");
             return
         }
         
@@ -199,12 +204,17 @@ const Home: NextPage = () => {
                     <link href='/favicon.ico' rel="shortcut icon" />
                 </Head>
                 
-                <div style={{display: "flex", backgroundColor: "black", width: "100%", padding: 0, marginTop: "-21px", flexDirection: "row", alignItems: "center"}}>
+                <div style={{display: "flex", backgroundColor: "black", width: "100%", padding: 0, marginTop: "-21px", flexDirection: "row", alignItems: "center", height: "105px"}}>
                     <h4 style={{fontSize: "16px", backgroundColor: "blue", width: "max-content", padding: "20px", borderTopRightRadius: "16px", borderBottomRightRadius: "16px", color: "white"}}>GachaCryptoCoin</h4>
-                    <h5 style={{color: "white", marginLeft: "30px"}}>L'endroit où vous pouvez gagner plus</h5>
+                    <div style={{display: "flex", justifyContent: "space-between", width: "100%", flexDirection: "row"}}>
+                        <h5 style={{color: "white", marginLeft: "30px"}}>L'endroit où vous pouvez gagner plus</h5>
+                        <div style={{display: "flex", alignItems: "center"}}>
+                            <FontAwesomeIcon style={{height: "20px", marginRight: "10px"}} size="sm" color="white" icon={faCartShopping} />
+                            <a style={{color: "white", marginRight: "50px", lineHeight:"60px"}} href="#"> Boutique</a>
+                        </div>
+                    </div>
                 </div>
                 <main className={styles.main}>
-                    
                     <div style={{display: "flex", justifyContent: "center", flexDirection: "column", width: "100%", /* backgroundColor: "red", */ alignItems: "center"}}>
                         <ConnectButton />
 
@@ -236,14 +246,19 @@ const Home: NextPage = () => {
                                 }} />
                                 
                                 {/* <button type="submit">Send</button> */}
-                                <button className={styles.button} type="submit" style={{
-                                    backgroundColor: "#2CE8B7",
-                                    borderWidth: "0px",
-                                    borderColor: "black",
-                                    borderRadius: "16px",
-                                    padding: "10px 20px 10px 20px",
-                                    fontWeight: "bold",
-                                }}>Acheter</button>
+                                <div style={{display: "flex", alignItems: "center"}}>
+                                    
+                                    <button className={styles.button} type="submit" style={{
+                                        backgroundColor: "#2CE8B7",
+                                        borderWidth: "0px",
+                                        borderColor: "black",
+                                        borderRadius: "16px",
+                                        padding: "10px 20px 10px 20px",
+                                        fontWeight: "bold",
+                                        display: "flex",
+                                        alignItems: "center"
+                                    }}><FontAwesomeIcon style={{height: "18px", marginRight: "10px"}} icon={faCoins} />Acheter</button>
+                                </div>
                             </form>
 
                             <form onSubmit={onSubmit} style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
@@ -271,7 +286,9 @@ const Home: NextPage = () => {
                                     borderRadius: "16px",
                                     padding: "10px 20px 10px 20px",
                                     fontWeight: "bold",
-                                }}>Valider</button>
+                                    display: "flex",
+                                    alignItems: "center"
+                                }}><FontAwesomeIcon style={{height: "18px", marginRight: "10px"}} icon={faSquareCheck} />Valider</button>
                             </form>
                         </div>
 
