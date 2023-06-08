@@ -224,7 +224,7 @@ const Home: NextPage = () => {
                                 <input name="to" type="text" placeholder="Adresse" /> */}
                                 
                                 <label style={{color: "#0098db", fontFamily: "cursive"}}>Acheter des GachaCoins</label>
-                                <input className={styles.placeholderColor} name="buyAmount" type="number" placeholder="Montant à acheter" color="green" className={styles.inputStyle}
+                                <input name="buyAmount" type="number" placeholder="Montant à acheter" color="green" className={styles.inputStyle}
                                 style={{
                                     backgroundColor: "#FD7592",
                                     color: "white",
@@ -232,7 +232,7 @@ const Home: NextPage = () => {
                                     padding: "15px 30px 15px 30px",
                                     marginBottom: "30px",
                                     marginTop: "10px",
-                                    borderWidth: "0px"
+                                    border: "3px solid black"
                                 }} />
                                 
                                 {/* <button type="submit">Send</button> */}
@@ -251,7 +251,7 @@ const Home: NextPage = () => {
                                 <input name="to" type="text" placeholder="Adresse" /> */}
                                 
                                 <label style={{color: "#0098db", fontFamily: "cursive"}}>Montant à gamble</label>
-                                <input name="amount" type="number" placeholder="Montant à rouler" /* value={toSend} onChange={(amount) => onChangeAmount(amount)} */ 
+                                <input className={styles.inputStyle} name="amount" type="number" placeholder="Montant à rouler"
                                 style={{
                                     backgroundColor: "#FD7592",
                                     color: "white",
@@ -259,7 +259,8 @@ const Home: NextPage = () => {
                                     padding: "15px 30px 15px 30px",
                                     marginBottom: "30px",
                                     marginTop: "10px",
-                                    borderWidth: "0px"
+                                    borderWidth: "0px",
+                                    border: "3px solid black"
                                 }}/>
                                 
                                 {/* <button type="submit">Send</button> */}
