@@ -56,7 +56,6 @@ const Home: NextPage = () => {
         if (provider && account) {
             provider.getBalance(account).then((balance: ethers.BigNumber) => {
                 setBalance(ethers.utils.formatEther(balance));
-
             });
         }
     }, [provider, account]);
@@ -200,8 +199,9 @@ const Home: NextPage = () => {
                     <link href='/favicon.ico' rel="shortcut icon" />
                 </Head>
                 
-                <div style={{backgroundColor: "red", width: "100%", padding: 0, marginTop: "-21px"}}>
-                    <h4 style={{backgroundColor: "blue", width: "max-content", padding: "10px"}}>GachaCryptoCoin</h4>
+                <div style={{display: "flex", backgroundColor: "black", width: "100%", padding: 0, marginTop: "-21px", flexDirection: "row", alignItems: "center"}}>
+                    <h4 style={{fontSize: "16px", backgroundColor: "blue", width: "max-content", padding: "20px", borderTopRightRadius: "16px", borderBottomRightRadius: "16px", color: "white"}}>GachaCryptoCoin</h4>
+                    <h5 style={{color: "white", marginLeft: "30px"}}>L'endroit où vous pouvez gagner plus</h5>
                 </div>
                 <main className={styles.main}>
                     
@@ -209,10 +209,10 @@ const Home: NextPage = () => {
                         <ConnectButton />
 
                         <div style={{display: "flex", justifyContent: "center", flexDirection: "column", width: "100%", /* backgroundColor: "red", */ alignItems: "center"}}>
-                            <h1>Votre wallet</h1>
-                            <p style={{fontStyle: "italic"}}>Adresse: <span style={{fontStyle: "normal", color: "blue"}}>{account}</span></p>
-                            <p>Balance: <span style={{color: "purple"}}>{balance} ETH</span></p>
-                            <p>Balance GachaCryptoCoin: {balanceHCN} GCG</p>
+                            <h1 className={styles.textWhite}>Votre wallet</h1>
+                            <p style={{fontWeight: "bold"}} className={styles.textWhite}>Adresse: <span style={{fontStyle: "italic", color: "#0098db"}}>{account}</span></p>
+                            <p className={styles.textWhite} style={{fontWeight: "bold"}}>Balance: <span style={{fontStyle: "italic", color: "#DDA0DD", fontWeight: "normal"}}>{balance} ETH</span></p>
+                            <p className={styles.textWhite} style={{fontWeight: "bold"}}>Balance GachaCryptoCoin: <span style={{fontStyle: "italic", color: "#DDA0DD", fontWeight: "normal"}}>{balanceHCN} GCG</span></p>
                         </div>
                     </div>
 
@@ -223,24 +223,26 @@ const Home: NextPage = () => {
                                 {/* <label htmlFor="to">Receveur</label>
                                 <input name="to" type="text" placeholder="Adresse" /> */}
                                 
-                                <label style={{color: "blue", fontFamily: "cursive"}}>Acheter des GachaCoins</label>
-                                <input name="buyAmount" type="number" placeholder="Montant à acheter" color="green" className={styles.inputStyle}
+                                <label style={{color: "#0098db", fontFamily: "cursive"}}>Acheter des GachaCoins</label>
+                                <input className={styles.placeholderColor} name="buyAmount" type="number" placeholder="Montant à acheter" color="green" className={styles.inputStyle}
                                 style={{
-                                    backgroundColor: "lightgrey",
-                                    color: "black",
-                                    borderRadius: "16px",
-                                    padding: "10px 20px 10px 20px",
-                                    marginBottom: "10px"
+                                    backgroundColor: "#FD7592",
+                                    color: "white",
+                                    borderRadius: "32px",
+                                    padding: "15px 30px 15px 30px",
+                                    marginBottom: "30px",
+                                    marginTop: "10px",
+                                    borderWidth: "0px"
                                 }} />
                                 
                                 {/* <button type="submit">Send</button> */}
-                                <button type="submit" style={{
-                                    backgroundColor: "lightblue",
-                                    borderWidth: "2px",
+                                <button className={styles.button} type="submit" style={{
+                                    backgroundColor: "#2CE8B7",
+                                    borderWidth: "0px",
                                     borderColor: "black",
                                     borderRadius: "16px",
                                     padding: "10px 20px 10px 20px",
-                                    fontWeight: "bold"
+                                    fontWeight: "bold",
                                 }}>Acheter</button>
                             </form>
 
@@ -248,24 +250,26 @@ const Home: NextPage = () => {
                                 {/* <label htmlFor="to">Receveur</label>
                                 <input name="to" type="text" placeholder="Adresse" /> */}
                                 
-                                <label style={{fontFamily: "cursive"}}>Montant à gamble</label>
+                                <label style={{color: "#0098db", fontFamily: "cursive"}}>Montant à gamble</label>
                                 <input name="amount" type="number" placeholder="Montant à rouler" /* value={toSend} onChange={(amount) => onChangeAmount(amount)} */ 
                                 style={{
-                                    backgroundColor: "lightgrey",
-                                    color: "black",
-                                    borderRadius: "16px",
-                                    padding: "10px 20px 10px 20px",
-                                    marginBottom: "10px"
+                                    backgroundColor: "#FD7592",
+                                    color: "white",
+                                    borderRadius: "32px",
+                                    padding: "15px 30px 15px 30px",
+                                    marginBottom: "30px",
+                                    marginTop: "10px",
+                                    borderWidth: "0px"
                                 }}/>
                                 
                                 {/* <button type="submit">Send</button> */}
                                 <button type="submit" className={styles.button} style={{
-                                    backgroundColor: "lightblue",
-                                    borderWidth: "2px",
+                                    backgroundColor: "#2CE8B7",
+                                    borderWidth: "0px",
                                     borderColor: "black",
                                     borderRadius: "16px",
                                     padding: "10px 20px 10px 20px",
-                                    fontWeight: "bold"
+                                    fontWeight: "bold",
                                 }}>Valider</button>
                             </form>
                         </div>
