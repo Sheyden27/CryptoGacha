@@ -1,9 +1,10 @@
 .container {
   padding: 0;
+  margin: 0;
 }
 
 .main {
-  min-height: 100vh;
+  height: 90vh;
   padding: 0;
   margin: 0;
   flex: 1;
@@ -11,6 +12,24 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+
+.formsContainer {
+  /* background-color: red; */
+  display: flex;
+  width: 70vw;
+  justify-content: space-evenly;
+  margin-top: 5%;
+
+}
+
+.inputStyle {
+  background-color: "lightgrey";
+  color: "black";
+  border-radius: "16px";
+  padding: "10px 20px 10px 20px";
+  margin-bottom: "10px";
 }
 
 .footer {

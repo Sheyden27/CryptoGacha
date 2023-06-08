@@ -25,6 +25,14 @@
     z-index: 10;
 }
 
+.textRegular {
+    font-family: "cursive";
+}
+.button {
+    background-color: blue;
+    border: 2px solid black;
+}
+
 .counter {
     /* transition: max-width 1s, min-width 1s;
     /* width: auto; 
