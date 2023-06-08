@@ -40,7 +40,6 @@ const Home: NextPage = () => {
         } else {
             console.log("Please install MetaMask!");
         }
-        setHaveGambled(true)
     }, []);
     
     useEffect(() => {
