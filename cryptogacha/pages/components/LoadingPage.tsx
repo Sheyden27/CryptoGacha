@@ -41,11 +41,7 @@ const LoadingPage = (props: {randomAmountGacha: any, setFinishedLoadingAnim: any
         isCounting: true,
         start,
         end,
-        duration,
-        easing,
-        decimalPlaces,
-        thousandsSeparator,
-        decimalSeparator
+        duration
     });
 
     useEffect(() => {
