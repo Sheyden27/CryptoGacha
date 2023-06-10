@@ -229,9 +229,7 @@ const Home: NextPage = () => {
 
                     <div>
                         <div className={styles.formsContainer}>
-                            <form onSubmit={onSubmitBuy} style={{display: "flex", flexDirection: "column", alignItems: "center"/* , margin: "10% 0 10% 0" */}}>
-                                {/* <label htmlFor="to">Receveur</label>
-                                <input name="to" type="text" placeholder="Adresse" /> */}
+                            <form onSubmit={onSubmitBuy} style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
                                 
                                 <label style={{color: "#0098db", fontFamily: "cursive"}}>Acheter des GachaCoins</label>
                                 <input name="buyAmount" type="number" placeholder="Montant à acheter" color="green" className={styles.inputStyle}
@@ -245,7 +243,6 @@ const Home: NextPage = () => {
                                     border: "3px solid black"
                                 }} />
                                 
-                                {/* <button type="submit">Send</button> */}
                                 <div style={{display: "flex", alignItems: "center"}}>
                                     
                                     <button className={styles.button} type="submit" style={{
@@ -262,9 +259,7 @@ const Home: NextPage = () => {
                             </form>
 
                             <form onSubmit={onSubmit} style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
-                                {/* <label htmlFor="to">Receveur</label>
-                                <input name="to" type="text" placeholder="Adresse" /> */}
-                                
+
                                 <label style={{color: "#0098db", fontFamily: "cursive"}}>Montant à gamble</label>
                                 <input className={styles.inputStyle} name="amount" type="number" placeholder="Montant à rouler"
                                 style={{
@@ -278,7 +273,6 @@ const Home: NextPage = () => {
                                     border: "3px solid black"
                                 }}/>
                                 
-                                {/* <button type="submit">Send</button> */}
                                 <button type="submit" className={styles.button} style={{
                                     backgroundColor: "#2CE8B7",
                                     borderWidth: "0px",
