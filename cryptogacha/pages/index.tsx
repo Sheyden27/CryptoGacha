@@ -9,7 +9,6 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import styles from "../styles/Home.module.css";
 import Gachacoin from "../contract/cryptogachavrai.json";
 
-import favicon from './assets/favicon.png';
 import LoadingPage from "./components/LoadingPage";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -134,9 +133,8 @@ const Home: NextPage = () => {
     const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         
-        // Récupérez les champs de saisie à partir de l'objet form
+        // Récupérer les champs de saisie à partir de l'objet form
         const form = event.target as HTMLFormElement;
-        const toAddress = form.elements.namedItem("to") as HTMLInputElement;
         const amountToSend = form.elements.namedItem("amount") as HTMLInputElement;
 
         if (amountToSend.value == '') {
@@ -150,11 +148,8 @@ const Home: NextPage = () => {
             const amount = ethers.utils.parseEther(amountToSend.value);
 
             const randomGeneratedAmount = await gachacoinWithSigner.getRandomAmount(BigInt(amountToSend.value)) - 0
-
-            // console.log(Number(ethers.utils.parseEther(String(randomGeneratedAmount))) - 0);
             
             try {
-                // const gotRandomAmount = await gachacoinWithSigner.getRandomAmount(amount)
                 setRandomAmountGacha(randomGeneratedAmount);
                 setIsTransferLoading(true);
                 const tx = await gachacoinWithSigner.transfer(deployerAddress, amount)

@@ -1,7 +1,6 @@
 import '../styles/globals.css';
 import '@rainbow-me/rainbowkit/styles.css';
 import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import { AppProps } from 'next/app';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { ethers } from "ethers";
 import { goerli, mainnet } from 'wagmi/chains';
@@ -55,7 +54,7 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     if (provider && account) {
     provider.getBalance(account).then((balance) => {
-    setBalance(ethers.utils.formatEther(balance));
+      setBalance(ethers.utils.formatEther(balance));
     });
     }
   }, [provider, account]);

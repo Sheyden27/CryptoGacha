@@ -2,18 +2,6 @@
 import { useEffect, useState, FC } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
- 
-import { ethers } from "ethers";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
-
-// import CountUp from 'react-countup';
-// import dynamic from 'next/dynamic'; 
-
-// const CountUp = dynamic(() => import('react-countup'), { ssr: false });
-
-// import dynamic from 'next/dynamic';
-
-//  const CountUp = dynamic(() => import('react-countup').then((module) => module.default), { ssr: false });
 
 import styles from "../../styles/loading.module.css";
 import { useCountUp } from "use-count-up";
@@ -22,7 +10,6 @@ const LoadingPage = (props: {randomAmountGacha: any, setFinishedLoadingAnim: any
     const [isTransferLoading, setIsTransferLoading] = useState(false);
     const [endAmount, setEndAmount] = useState(0);
     const [startAmount, setStartAmount] = useState(-875.039);
-    const [intermediateAmount, setIntermediateAmount] = useState(0);
 
     const [animationEnded, setAnimationEnded] = useState(false);
     const [animationStarted, setAnimationStarted] = useState(false);
@@ -32,10 +19,6 @@ const LoadingPage = (props: {randomAmountGacha: any, setFinishedLoadingAnim: any
     const [start, setStart] = useState(1492);
     const [end, setEnd] = useState(7894);
     const [duration, setDuration] = useState(2);
-    // const [decimalPlaces, setDdecimalPlaces] = useState(0);
-    // const [easing, setEasing] = useState("easeOutCubic");
-    // const [thousandsSeparator, setThousandsSeparator] = useState("");
-    // const [decimalSeparator, setDecimalSeparator] = useState("");
     const [firstAnimFinished, setFirstAnimFinished] = useState(false);
 
     const { value, reset } = useCountUp({
@@ -46,7 +29,6 @@ const LoadingPage = (props: {randomAmountGacha: any, setFinishedLoadingAnim: any
     });
 
     useEffect(() => {
-    //   setEndAmount(Math.floor(Math.random() * 1000000 + 1))
       setEnd(Math.floor(Math.random() * 1000000 + 1))
     }, [])
 
